@@ -1,0 +1,36 @@
+﻿<Window x:Class="System_04._26_ex2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Copy" Height="300" Width="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="SourcePath" Grid.Row="0" Grid.Column="0" Margin="5" GotFocus="RemovePlaceholder" LostFocus="AddPlaceholder" Text="Шлях до початкового файлу" Foreground="Gray"/>
+        <Button Content="Обрати" Grid.Row="0" Grid.Column="1" Margin="5" Click="SelectSourceFile_Click"/>
+
+        <TextBox x:Name="DestinationPath" Grid.Row="1" Grid.Column="0" Margin="5" GotFocus="RemovePlaceholder" LostFocus="AddPlaceholder" Text="Шлях для копіювання" Foreground="Gray"/>
+        <Button Content="Обрати" Grid.Row="1" Grid.Column="1" Margin="5" Click="SelectDestinationFile_Click"/>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Кількість потоків:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="ThreadCount" Width="50" Text="4"/>
+        </StackPanel>
+
+        <ProgressBar x:Name="ProgressBar" Grid.Row="3" Grid.ColumnSpan="2" Height="25" Margin="5"/>
+
+        <Button Content="Старт" Grid.Row="4" Grid.ColumnSpan="2" Height="30" Margin="5" Click="StartCopy_Click"/>
+        <Button Content="Пауза" Grid.Row="5" Grid.ColumnSpan="2" Height="30" Margin="5" Click="PauseCopy_Click"/>
+        <Button Content="Зупинити" Grid.Row="6" Grid.ColumnSpan="2" Height="30" Margin="5" Click="StopCopy_Click"/>
+    </Grid>
+</Window>
