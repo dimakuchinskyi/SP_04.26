@@ -1,0 +1,49 @@
+﻿<Window x:Class="System_04._26_ex3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Копіювання директорій" Height="300" Width="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+            <TextBox x:Name="SourcePathTextBox" />
+            <TextBlock Text="Шлях до початкової директорії" 
+                       IsHitTestVisible="False" 
+                       Foreground="Gray" 
+                       VerticalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Visibility="{Binding Text, ElementName=SourcePathTextBox, Converter={StaticResource StringToVisibilityConverter}}" />
+        </Grid>
+        <Button Content="Обрати" Grid.Row="0" Grid.Column="1" Margin="5" Click="SelectSourcePath_Click"/>
+
+        <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+            <TextBox x:Name="DestinationPathTextBox" />
+            <TextBlock Text="Шлях для копіювання" 
+                       IsHitTestVisible="False" 
+                       Foreground="Gray" 
+                       VerticalAlignment="Center" 
+                       Margin="5,0,0,0" 
+                       Visibility="{Binding Text, ElementName=DestinationPathTextBox, Converter={StaticResource StringToVisibilityConverter}}" />
+        </Grid>
+        <Button Content="Обрати" Grid.Row="1" Grid.Column="1" Margin="5" Click="SelectDestinationPath_Click"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Кількість потоків:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="ThreadCountTextBox" Width="50" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <ProgressBar x:Name="CopyProgressBar" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="25" Margin="5"/>
+
+        <Button Content="Старт" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Height="30" Margin="5" Click="StartCopy_Click"/>
+    </Grid>
+</Window>
